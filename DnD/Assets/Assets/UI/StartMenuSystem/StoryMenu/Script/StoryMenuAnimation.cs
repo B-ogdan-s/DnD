@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-namespace StartMenu
+namespace UI.StartMenu
 {
     public class StoryMenuAnimation : MonoBehaviour
     {

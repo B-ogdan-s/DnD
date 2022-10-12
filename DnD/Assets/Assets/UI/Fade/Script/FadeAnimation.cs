@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace StartMenu
+namespace UI
 {
     public class FadeAnimation : MonoBehaviour
     {
@@ -30,11 +30,29 @@ namespace StartMenu
             StartCoroutine(CR_Open());
         }
 
+        public void Close()
+        {
+            _fade.enabled = true;
+            _fadePanel.GetComponent<Image>().DOFade(1, 0);
+            _slider.DOFade(1, 0);
+            StartCoroutine(CR_Close());
+        }
+
         private IEnumerator CR_Open()
         {
             _fadePanel.GetComponent<Image>().DOFade(1, _time);
             yield return new WaitForSeconds(_timePause);
             _slider.DOFade(1, _time);
+        }
+
+        private IEnumerator CR_Close()
+        {
+            _slider.GetComponentInChildren<Slider>().value = 1;
+            _slider.DOFade(0, _time);
+            yield return new WaitForSeconds(_timePause);
+            _fadePanel.GetComponent<Image>().DOFade(0, _time);
+            yield return new WaitForSeconds(_time);
+            _fade.enabled = false;
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-namespace StartMenu
+namespace UI.StartMenu
 {
     public class Scroll : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using DG.Tweening;
 
-namespace StartMenu
+namespace UI.StartMenu
 {
     public class StartMenuAnimation : MonoBehaviour
     {
