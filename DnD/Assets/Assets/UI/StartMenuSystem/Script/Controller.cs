@@ -8,19 +8,19 @@ namespace UI.StartMenu
 {
     public class Controller : MonoBehaviour
     {
-        private StartMenuAnimation _startmenu;
-        private StoryMenuAnimation _story;
+        private StartMenuUI _startmenu;
+        private StoryMenuUI _story;
         private Scroll _scroll;
-        CreateStoryMenuAnimation _createStoryMenuAnimation;
-        private FadeAnimation _fade;
+        CreateStoryMenuUI _createStoryMenuAnimation;
+        private FadeUI _fade;
 
         private void Start()
         {
-            _startmenu = GetComponentInChildren<StartMenuAnimation>();
-            _story = GetComponentInChildren<StoryMenuAnimation>();
+            _startmenu = GetComponentInChildren<StartMenuUI>();
+            _story = GetComponentInChildren<StoryMenuUI>();
             _scroll = GetComponentInChildren<Scroll>();
-            _createStoryMenuAnimation = GetComponentInChildren<CreateStoryMenuAnimation>();
-            _fade = GetComponentInChildren<FadeAnimation>();
+            _createStoryMenuAnimation = GetComponentInChildren<CreateStoryMenuUI>();
+            _fade = GetComponentInChildren<FadeUI>();
         }
         public void ClickGame()
         {
