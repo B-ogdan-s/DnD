@@ -22,6 +22,7 @@ namespace UI.StartMenu
         private void Start()
         {
             _text.DOFade(0, 0);
+            /*
             Story.StoryPanel[] story = GetComponentsInChildren<Story.StoryPanel>();
 
             for(int i = 0; i < story.Length; i++)
@@ -29,6 +30,7 @@ namespace UI.StartMenu
                 _storyPrefabs.Add(story[i].gameObject);
                 story[i].gameObject.GetComponent<CanvasGroup>().alpha = 0;
             }
+            */
 
             if(_storyPrefabs.Count == 0)
             {

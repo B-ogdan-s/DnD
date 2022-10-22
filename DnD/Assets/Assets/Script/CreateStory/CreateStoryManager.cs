@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace CreateStory
 {
-    public class CreateStoryControler : MonoBehaviour
+    public class CreateStoryManager : MonoBehaviour
     {
         [SerializeField] private CreatePlaneStory _createPlaneStory;
-        [SerializeField] private TransformController _transformController;
+        [SerializeField] private TransformManager _transformController;
 
         private int _x;
         private int _z;
@@ -15,7 +15,7 @@ namespace CreateStory
 
         private void Start()
         {
-            _createPlaneStory._returnInfo += SetInfo;
+            _createPlaneStory.ReturnInfo += SetInfo;
         }
         private void SetInfo(int x, int z, TypePlane[,] type)
         {

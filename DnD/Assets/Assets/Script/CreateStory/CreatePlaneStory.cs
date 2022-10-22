@@ -18,7 +18,7 @@ namespace CreateStory
         private int _x;
         private int _z;
 
-        public event System.Action<int, int, TypePlane[,]> _returnInfo;
+        public event System.Action<int, int, TypePlane[,]> ReturnInfo;
 
         public void CreatePlane(int x, int z)
         {
@@ -36,7 +36,7 @@ namespace CreateStory
             float startPosZ = transform.localPosition.z - ((_z * _scale)/2 - (_scale / 2));
 
             CreateType();
-            _returnInfo(x, z, _planeType);
+            ReturnInfo(x, z, _planeType);
 
             for (int i = 0; i < _x; i++)
             {

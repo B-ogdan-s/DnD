@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 
 namespace CreateStory
 {
-    public class TransformController : MonoBehaviour, IPointerEnterHandler, IDragHandler, IEndDragHandler
+    public class TransformManager : MonoBehaviour, IPointerEnterHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] private Button _transButton;
         [SerializeField] private Button _rotButton;
