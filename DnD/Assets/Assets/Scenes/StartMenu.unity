@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 5953985}
   - component: {fileID: 5953987}
   - component: {fileID: 5953986}
+  - component: {fileID: 5953988}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -338,6 +339,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5953984}
   m_CullTransparentMesh: 1
+--- !u!114 &5953988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12aab041946107640983cce0cda10273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _registerButtom: {fileID: 1165281485}
+  _loginButtom: {fileID: 62400220}
+  _underline: {fileID: 1511729672}
+  _underlineScaleValue: 1.4
+  _buttomWidth: 300
+  _switchingTime: 0.2
 --- !u!1 &23346399
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +491,7 @@ GameObject:
   - component: {fileID: 62400219}
   - component: {fileID: 62400218}
   - component: {fileID: 62400217}
+  - component: {fileID: 62400220}
   m_Layer: 0
   m_Name: Button (1)
   m_TagString: Untagged
@@ -543,7 +563,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 62400218}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 62400220}
+        m_TargetAssemblyTypeName: FirebaseUI.ButtonUI, Assembly-CSharp
+        m_MethodName: ClickButtom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &62400218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +614,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62400215}
   m_CullTransparentMesh: 1
+--- !u!114 &62400220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62400215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72aa07f4a73db04abcbc72965b4ff55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonText: {fileID: 171697451}
+  _enableFade: 0.5
 --- !u!1 &65230005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,8 +1614,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2160905420
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5019608}
+    rgba: 4291611852
+  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5153,6 +5199,7 @@ GameObject:
   - component: {fileID: 1165281484}
   - component: {fileID: 1165281483}
   - component: {fileID: 1165281482}
+  - component: {fileID: 1165281485}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -5224,7 +5271,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1165281483}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1165281485}
+        m_TargetAssemblyTypeName: FirebaseUI.ButtonUI, Assembly-CSharp
+        m_MethodName: ClickButtom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1165281483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5263,6 +5322,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165281480}
   m_CullTransparentMesh: 1
+--- !u!114 &1165281485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165281480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72aa07f4a73db04abcbc72965b4ff55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonText: {fileID: 423065189}
+  _enableFade: 0.5
 --- !u!1 &1171848225
 GameObject:
   m_ObjectHideFlags: 0
