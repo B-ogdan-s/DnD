@@ -33,6 +33,7 @@ namespace FirebaseUI
             _loginButtom.DisableButtom();
 
             _linePos = newPos;
+            ErrorUI._instance.SetError("");
             
             if(_coroutine != null)
             {
