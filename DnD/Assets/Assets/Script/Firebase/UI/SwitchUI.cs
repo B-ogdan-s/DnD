@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace FirebaseUI
 {
-    public class FirebaseUI : MonoBehaviour
+    public class SwitchUI : MonoBehaviour
     {
         [SerializeField] private ButtonUI _registerButtom;
         [SerializeField] private ButtonUI _loginButtom;

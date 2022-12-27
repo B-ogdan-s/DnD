@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Auth;
 using Firebase;
+using Sirenix.OdinInspector;
 
 public class Auth : MonoBehaviour
 {
     public static FirebaseAuth _auth;
     public static FirebaseUser _user;
 
-    public static Action _OpenRegistory;
-    public static Action _CloseRegistory;
-    public static Action _CloseLogin;
+    public static Action _OpenFirebase;
+    public static Action _CloseFirenase;
 
     public static Action _SetName;
     public static Action<int> _SetRecord;
@@ -52,15 +52,16 @@ public class Auth : MonoBehaviour
             bool signedIn = _user != _auth.CurrentUser && _auth.CurrentUser != null;
             if (!signedIn && _user != null)
             {
-                _OpenRegistory?.Invoke();
+                _OpenFirebase?.Invoke();
             }
             _user = _auth.CurrentUser;
         }
         else if (_user == null)
         {
-            _OpenRegistory?.Invoke();
+            _OpenFirebase?.Invoke();
         }
     }
+    [Button]
     public void OnSignOut()
     {
         _auth.SignOut();
@@ -101,7 +102,7 @@ public class Auth : MonoBehaviour
         else
         {
             _user = loginTask.Result;
-            _CloseLogin?.Invoke();
+            _CloseFirenase?.Invoke();
         }
     }
     private IEnumerator CR_Register(string email, string password, string name)
@@ -147,7 +148,7 @@ public class Auth : MonoBehaviour
             }
             _SetName?.Invoke();
             _SetRecord?.Invoke(0);
-            _CloseRegistory?.Invoke();
+            _CloseFirenase?.Invoke();
         }
     }
 
