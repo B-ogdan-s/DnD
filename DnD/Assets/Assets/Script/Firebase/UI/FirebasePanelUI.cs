@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -21,6 +22,8 @@ namespace FirebaseUI
 
         private Coroutine _closeCoroutine;
 
+        public static event Action _OnClear;
+
         private void Start()
         {
             _startPos = _content.localPosition.y + _shift;
@@ -43,6 +46,7 @@ namespace FirebaseUI
             _canvas.enabled = true;
             _fadePanel.DOFade(_fadeValue, _time);
             _content.DOLocalMoveY(_endPos, _time);
+            _OnClear?.Invoke();
         }
         public void ClosePanel()
         {

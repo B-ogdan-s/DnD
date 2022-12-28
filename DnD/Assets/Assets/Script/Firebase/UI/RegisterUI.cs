@@ -27,6 +27,7 @@ namespace FirebaseUI
 
         private void Start()
         {
+            FirebasePanelUI._OnClear += Clear;
             _inputEmail.onEndEdit.AddListener((string value) =>
             {
                 _emailString = value;
@@ -79,6 +80,23 @@ namespace FirebaseUI
                 }
                 _Register?.Invoke(_emailString, _confirmPasswordString, _nameString);
             });
+        }
+
+        public void Clear()
+        {
+            _inputEmail.text = "";
+            _inputName.text = "";
+            _inputPassword.text = "";
+            _inputConfirmPassword.text = "";
+            _emailString = "";
+            _nameString = "";
+            _passwordString = "";
+            _confirmPasswordString = "";
+        }
+
+        private void OnDestroy()
+        {
+            FirebasePanelUI._OnClear -= Clear;
         }
     }
 }
