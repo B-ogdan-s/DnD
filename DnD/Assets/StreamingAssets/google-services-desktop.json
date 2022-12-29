@@ -8,30 +8,27 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:46402047973:android:4378dfb7a2a52e42cc690c",
+        "mobilesdk_app_id": "1:46402047973:ios:410e5941dea81921cc690c",
         "android_client_info": {
           "package_name": "com.BAndD.DnD"
         }
       },
       "oauth_client": [
         {
-          "client_id": "46402047973-svjljsc1llphl7vsmueu5ohg3umrou1j.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "46402047973-8lp4dflbt541n2mqus3nqu3v5c1v01ru.apps.googleusercontent.com"
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAEJSCOHYqeSilceh815QtKxKFKLRRippo"
+          "current_key": "AIzaSyBJSuwtthmqeM2Oms6j5KrdqgEtKBfecWQ"
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 0
+        },
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "46402047973-svjljsc1llphl7vsmueu5ohg3umrou1j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1
         }
       }
     }
