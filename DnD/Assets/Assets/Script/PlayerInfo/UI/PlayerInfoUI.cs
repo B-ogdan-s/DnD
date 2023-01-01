@@ -35,6 +35,7 @@ public class PlayerInfoUI : MonoBehaviour
         Auth._UpdatePlayerInfo += ReadId;
 
         _canvas = GetComponent<Canvas>();
+        _canvas.enabled = true;
         _startPosLeftPanel = _leftPanel.localPosition.x - _shift;
         _startPosRightPanel = _rightPanel.localPosition.x + _shift;
         _endPosLeftPanel = _leftPanel.localPosition.x;
@@ -46,15 +47,20 @@ public class PlayerInfoUI : MonoBehaviour
 
         _canvas.enabled = false;
 
-        ReadName();
-        ReadId();
+        if (Auth._user != null)
+        {
+            ReadName();
+            ReadId();
+        }
     }
 
     private async void ReadName()
     {
-        var name = Database.ReadName();
+        
+        var name = Database.ReadName(Auth._user.UserId);
         await Task.WhenAll(name);
         _playerName.text = name.Result;
+        
     }
 
     private void ReadId()

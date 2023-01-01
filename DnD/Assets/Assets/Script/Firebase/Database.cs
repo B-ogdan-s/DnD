@@ -14,14 +14,14 @@ public class Database : MonoBehaviour
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         DontDestroyOnLoad(this);
     }
-
+    
     private void SetName()
     {
         StartCoroutine(CR_SetNam());
     }
-    public async static Task<string> ReadName()
+    public async static Task<string> ReadName(string id)
     {
-        var snapshot = _databaseReference.Child("Users").Child(Auth._user.UserId).Child("Name").GetValueAsync();
+        var snapshot = _databaseReference.Child("Users").Child(id).Child("Name").GetValueAsync();
         await snapshot;
 
         if (snapshot.Result.Value == null)
@@ -41,5 +41,5 @@ public class Database : MonoBehaviour
     {
         Auth._SetName -= SetName;
     }
-
+    
 }
