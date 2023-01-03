@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.UI;
+using System;
 
 public class InvitationFriendUI : MonoBehaviour
 {
@@ -20,7 +22,11 @@ public class InvitationFriendUI : MonoBehaviour
 
     [SerializeField] private TMP_InputField _inputField;
 
+    [SerializeField] private Image _friendIcon;
+    [SerializeField] private Texture2D _default;
     [SerializeField] private TextMeshProUGUI _name;
+
+
     [SerializeField] private TextMeshProUGUI _errorText;
 
     private void Start()
@@ -37,10 +43,19 @@ public class InvitationFriendUI : MonoBehaviour
     {
         CanvasGroupController(_loading);
     }
-    public void OpenFriend(string name)
+    public void OpenFriend(string name, Texture2D icon)
     {
         CanvasGroupController(_friend);
         _name.text = name;
+
+        if(icon != null)
+        {
+            _friendIcon.material.SetTexture("_Icon", icon);
+        }
+        else
+        {
+            _friendIcon.material.SetTexture("_Icon", _default);
+        }
     }
     public void OpenError(string errorMessage)
     {

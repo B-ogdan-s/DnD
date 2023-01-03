@@ -30,10 +30,6 @@ public class Storage : MonoBehaviour
                 // Uh-oh, an error occurred!
                 Debug.LogError("Update Icon: Error");
             }
-            else
-            {
-                Debug.Log(task.Result.SizeBytes);
-            }
         });
 
     }
@@ -41,16 +37,15 @@ public class Storage : MonoBehaviour
     {
         byte[] fileContents = null;
 
-        StorageReference storageRef = FirebaseStorage.DefaultInstance.RootReference.Child("Player Icon/" + Auth._user.UserId + ".jpg");
+        StorageReference storageRef = FirebaseStorage.DefaultInstance.RootReference.Child("Player Icon/" + iconPath + ".jpg");
 
         await storageRef.GetBytesAsync(1024*1024).ContinueWithOnMainThread(task => {
             if (task.IsFaulted || task.IsCanceled)
             {
-                Debug.LogException(task.Exception);
+                Debug.LogWarning(task.Exception);
             }
             else
             {
-                Debug.Log("Finished downloading!");
                 fileContents = task.Result;
             }
         });

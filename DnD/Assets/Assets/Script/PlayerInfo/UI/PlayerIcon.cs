@@ -32,7 +32,6 @@ public class PlayerIcon : MonoBehaviour
     {
         NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
         {
-            Debug.Log("Image path: " + path);
             if (path != null)
             {
                 Texture2D texture =  CropImage(NativeGallery.LoadImageAtPath(path, maxSize, false));
@@ -87,15 +86,16 @@ public class PlayerIcon : MonoBehaviour
 
 
         var icon = Storage._instance.GetIcon(iconPath);
-        var iconInfo = Database.ReadIconInfo(iconPath);
+        var iconInfo = PlayerData.ReadIconInfo(iconPath);
 
         await Task.WhenAll(icon, iconInfo);
 
-        Debug.Log("ffff  " + icon.Result[0]);
+        if(icon.Result == null)
+        {
+            return;
+        }
 
         Texture2D newTexture = new Texture2D(iconInfo.Result, iconInfo.Result);
-
-        Debug.Log(icon.Result);
         newTexture.LoadImage(icon.Result);
 
         SetIcon(newTexture);

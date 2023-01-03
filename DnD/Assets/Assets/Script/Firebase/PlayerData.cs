@@ -4,7 +4,7 @@ using UnityEngine;
 using Firebase.Database;
 using System.Threading.Tasks;
 
-public class Database : MonoBehaviour
+public class PlayerData : MonoBehaviour
 {
     private static DatabaseReference _databaseReference;
 
@@ -46,7 +46,7 @@ public class Database : MonoBehaviour
             return 0;
         }
 
-        return int.Parse(snapshot.Result.Value.ToString()); //snapshot.Result.Value;
+        return int.Parse(snapshot.Result.Value.ToString());
 
     }
 

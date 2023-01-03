@@ -57,7 +57,7 @@ public class PlayerInfoUI : MonoBehaviour
     private async void ReadName()
     {
         
-        var name = Database.ReadName(Auth._user.UserId);
+        var name = PlayerData.ReadName(Auth._user.UserId);
         await Task.WhenAll(name);
         _playerName.text = name.Result;
         

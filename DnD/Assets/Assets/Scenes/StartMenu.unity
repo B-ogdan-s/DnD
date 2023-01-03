@@ -1616,6 +1616,8 @@ MonoBehaviour:
   _friend: {fileID: 2096824634}
   _error: {fileID: 495707641}
   _inputField: {fileID: 1755606232}
+  _friendIcon: {fileID: 1421923330}
+  _default: {fileID: 2800000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
   _name: {fileID: 380701075}
   _errorText: {fileID: 67767191}
 --- !u!1 &140840424
@@ -2738,7 +2740,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 289374504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1060485810}
+        m_TargetAssemblyTypeName: FriendInfo.InvitationFriend, Assembly-CSharp
+        m_MethodName: Invite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &289374504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3441,7 +3455,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351432723}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -5161,6 +5175,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622925960}
   m_CullTransparentMesh: 1
+--- !u!1 &628631209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628631211}
+  - component: {fileID: 628631210}
+  m_Layer: 0
+  m_Name: FrientData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &628631210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628631209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f87758d9d0a9a84fb7862908a65cbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &628631211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628631209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635823676
 GameObject:
   m_ObjectHideFlags: 0
@@ -7832,7 +7889,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043053614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc2449dda5b7d043b5208a41aca7863, type: 3}
+  m_Script: {fileID: 11500000, guid: 6aa54d2cc2136e04bbc134b26328e7b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1043053618
@@ -13509,7 +13566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b388ef08c0dde48bc815c69bcb7e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSizeImage: 256
+  _maxSizeImage: 512
   _icon: {fileID: 1813167390}
   _default: {fileID: 2800000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
 --- !u!1 &1824174091
@@ -16349,7 +16406,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096824632}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
