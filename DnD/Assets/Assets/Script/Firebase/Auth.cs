@@ -17,6 +17,7 @@ public class Auth : MonoBehaviour
 
     public static Action _UpdatePlayerInfo;
 
+    public static Action<string> _UpdatePlayerIcon;
 
     public static Action _SetName;
 
@@ -109,6 +110,7 @@ public class Auth : MonoBehaviour
             _user = loginTask.Result;
             _CloseFirenase?.Invoke();
             _UpdatePlayerInfo?.Invoke();
+            _UpdatePlayerIcon?.Invoke(_user.UserId);
         }
     }
     private IEnumerator CR_Register(string email, string password, string name)
@@ -155,6 +157,7 @@ public class Auth : MonoBehaviour
             _SetName?.Invoke();
             _CloseFirenase?.Invoke();
             _UpdatePlayerInfo?.Invoke();
+            _UpdatePlayerIcon?.Invoke(_user.UserId);
         }
     }
 

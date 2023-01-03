@@ -14,14 +14,13 @@ public class PlayerIcon : MonoBehaviour
 
     public static event Action<int> _SetIconInfo;
 
+    private void Awake()
+    {
+        Auth._UpdatePlayerIcon += ReadIcon;
+    }
     private void Start()
     {
-        SetIcon(_default);
-
-        if (Auth._user.UserId != null)
-        {
-            ReadIcon(Auth._user.UserId);
-        }
+        ReadIcon(Auth._user.UserId);
     }
 
     public void OnClick()
@@ -84,6 +83,9 @@ public class PlayerIcon : MonoBehaviour
 
     public async void ReadIcon(string iconPath)
     {
+        SetIcon(_default);
+
+
         var icon = Storage._instance.GetIcon(iconPath);
         var iconInfo = Database.ReadIconInfo(iconPath);
 
@@ -101,5 +103,10 @@ public class PlayerIcon : MonoBehaviour
     public void SetIcon(Texture2D texture)
     {
         _icon.material.SetTexture("_Icon", texture);
+    }
+
+    private void OnDestroy()
+    {
+        Auth._UpdatePlayerIcon -= ReadIcon;
     }
 }
