@@ -19,7 +19,7 @@ public class Storage : MonoBehaviour
     public async void SetIcon(byte[] image)
     {
         StorageReference storageRef = FirebaseStorage.DefaultInstance.RootReference;
-        StorageReference riversRef = storageRef.Child("Player Icon/" + Auth._user.UserId);
+        StorageReference riversRef = storageRef.Child("Player Icon/" + Auth._user.UserId + ".jpg");
 
         var metadata = new MetadataChange();
         metadata.ContentType = "image/jpg";
@@ -30,6 +30,10 @@ public class Storage : MonoBehaviour
                 // Uh-oh, an error occurred!
                 Debug.LogError("Update Icon: Error");
             }
+            else
+            {
+                Debug.Log(task.Result.SizeBytes);
+            }
         });
 
     }
@@ -37,9 +41,9 @@ public class Storage : MonoBehaviour
     {
         byte[] fileContents = null;
 
-        StorageReference storageRef = FirebaseStorage.DefaultInstance.RootReference.Child("Player Icon/" + Auth._user.UserId);
+        StorageReference storageRef = FirebaseStorage.DefaultInstance.RootReference.Child("Player Icon/" + Auth._user.UserId + ".jpg");
 
-        await storageRef.GetBytesAsync(1024*1024*10).ContinueWithOnMainThread(task => {
+        await storageRef.GetBytesAsync(1024*1024).ContinueWithOnMainThread(task => {
             if (task.IsFaulted || task.IsCanceled)
             {
                 Debug.LogException(task.Exception);

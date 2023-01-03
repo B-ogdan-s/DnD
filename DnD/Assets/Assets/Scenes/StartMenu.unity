@@ -13511,6 +13511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSizeImage: 256
   _icon: {fileID: 1813167390}
+  _default: {fileID: 2800000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
 --- !u!1 &1824174091
 GameObject:
   m_ObjectHideFlags: 0
