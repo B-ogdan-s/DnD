@@ -10,14 +10,18 @@ public class FriendButton : MonoBehaviour
     [SerializeField] private string _key;
     [SerializeField] private bool _activate = false;
 
+    [SerializeField] private ExpectationFriend _friend;
+
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Color _disableColor;
+
+    [SerializeField] private GameObject _prefab;
 
     private Color _enableColor;
 
     private Button _button;
 
-    public event Action<string> _OnUpdeteList;
+    public event Action _OnUpdeteList;
 
     private void Awake()
     {
@@ -32,19 +36,29 @@ public class FriendButton : MonoBehaviour
         {
             Click();
         });
+    }
 
-        if(!_activate)
+    public void StartEnable()
+    {
+        if (!_activate)
         {
             return;
         }
-        Click();
+        else
+        {
+            Click();
+        }
     }
 
     private void Click()
     {
-        _OnUpdeteList?.Invoke(_key);
+        _friend.ClosePanel();
+
+        _OnUpdeteList?.Invoke();
         _button.interactable = false;
         _text.color = _disableColor;
+
+        _friend.OpenPanel(_key, _prefab);
     }
 
     public void Enable()

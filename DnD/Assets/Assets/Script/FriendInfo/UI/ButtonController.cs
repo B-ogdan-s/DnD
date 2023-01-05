@@ -17,13 +17,20 @@ namespace FriendInfo
             }
         }
 
-        private void Switch(string key)
+        public void Open()
+        {
+            foreach (FriendButton button in _friendButtons)
+            {
+                button.StartEnable();
+            }
+        }
+
+        private void Switch()
         {
             foreach (FriendButton button in _friendButtons)
             {
                 button.Enable();
             }
         }
-
     }
 }

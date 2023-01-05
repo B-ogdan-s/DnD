@@ -9,10 +9,11 @@ namespace FriendInfo
     public class InvitationFriend : MonoBehaviour
     {
         [SerializeField] private InvitationFriendUI _invitationFriendUI;
+        [SerializeField] private string _key;
 
         private string _frandId;
 
-        public static event Action<string> _Invite;
+        public static event Action<string, string> _Invite;
 
         public void InputID(string id)
         {
@@ -47,7 +48,7 @@ namespace FriendInfo
 
         public void Invite()
         {
-            _Invite?.Invoke(_frandId);
+            _Invite?.Invoke(_frandId, _key);
             CloseInvitationFriend();
         }
 
