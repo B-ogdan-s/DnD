@@ -12512,7 +12512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1534825043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12979,7 +12979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52086c6e50a0bd34bb9f8e33be920803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: Friends
+  _key: Friend
   _activate: 1
   _friend: {fileID: 1995325944}
   _text: {fileID: 1227176029}

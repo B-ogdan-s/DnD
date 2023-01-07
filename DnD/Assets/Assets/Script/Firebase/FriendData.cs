@@ -11,19 +11,22 @@ public class FriendData : MonoBehaviour
 {
     private static DatabaseReference _databaseReference;
 
+    public static FriendData _friendData;
+
     private void Start()
     {
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         FriendInfo.InvitationFriend._Invite += AddFriends;
+        _friendData = this;
     }
 
-    public void AddFriends(string id, string key)
+    public void AddFriends(string playerId, string friendId, string key)
     {
-        _databaseReference.Child("Users").Child(id).Child(key).RunTransaction(mutableData =>
+        _databaseReference.Child("Users").Child(friendId).Child(key).RunTransaction(mutableData =>
         {
             List<object> invitation = mutableData.Value as List<object>;
 
-            if (id == Auth._user.UserId)
+            if (friendId == playerId)
             {
                 mutableData.Value = invitation;
                 return TransactionResult.Success(mutableData);
@@ -34,13 +37,13 @@ public class FriendData : MonoBehaviour
             }
             foreach (string invitationItem in invitation)
             {
-                if(invitationItem == Auth._user.UserId)
+                if(invitationItem == playerId)
                 {
                     mutableData.Value = invitation;
                     return TransactionResult.Success(mutableData);
                 }
             }
-            invitation.Add(Auth._user.UserId);
+            invitation.Add(playerId);
             mutableData.Value = invitation;
             return TransactionResult.Success(mutableData);
         });
@@ -52,15 +55,36 @@ public class FriendData : MonoBehaviour
         {
             List<object> invitation = mutableData.Value as List<object>;
 
-            if(invitation.Contains(friendId))
-                invitation.Remove(friendId);
+            List<string> invitationS = new List<string>();
 
-            mutableData.Value = invitation;
+            Debug.Log(mutableData.Value);
+
+            if (invitation == null)
+            {
+                invitation = new List<object>();
+            }
+
+            foreach (object invitationItem in invitation)
+            {
+                if (invitationItem.ToString() != friendId)
+                {
+                    Debug.Log(invitationItem.ToString());
+                    invitationS.Add(invitationItem.ToString());
+                }
+                else
+                {
+                    _databaseReference.Child("Users").Child(playerId).Child(key).Child((invitation.Count - 1).ToString()).RemoveValueAsync();
+                }
+            }
+
+            Debug.Log(invitationS.Count);
+
+            mutableData.Value = invitationS;
             return TransactionResult.Success(mutableData);
         });
     }
 
-    public static async Task<List<string>> ReadFriends(string key)
+    public async Task<List<string>> ReadFriends(string key)
     {
         var snapshot = _databaseReference.Child("Users").Child(Auth._user.UserId).Child(key).GetValueAsync();
         await snapshot;

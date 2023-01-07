@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ExpectationFriend : MonoBehaviour
+public class FriendsListPopup : MonoBehaviour
 {
     [SerializeField] private Transform _parents;
     [SerializeField] private GameObject _loadingPanel;
@@ -28,7 +28,7 @@ public class ExpectationFriend : MonoBehaviour
     {
         List<FriendInfo> friendInfos = new List<FriendInfo>();
 
-        var friendsId = FriendData.ReadFriends(key);
+        var friendsId = FriendData._friendData.ReadFriends(key);
         await Task.WhenAll(friendsId);
 
         if (cancellationToken.IsCancellationRequested)
@@ -43,11 +43,11 @@ public class ExpectationFriend : MonoBehaviour
             _emptyPanel.SetActive(true);
             return;
         }
-        foreach (var panel in friendsId.Result)
+        foreach (var friend in friendsId.Result)
         {
-            var name = PlayerData.ReadName(panel);
-            var icon = Storage._instance.GetIcon(panel);
-            var iconInfo = PlayerData.ReadIconInfo(panel);
+            var name = PlayerData.ReadName(friend);
+            var icon = Storage._instance.GetIcon(friend);
+            var iconInfo = PlayerData.ReadIconInfo(friend);
 
             await Task.WhenAll(name, icon, iconInfo);
 
@@ -58,10 +58,15 @@ public class ExpectationFriend : MonoBehaviour
                 return;
             }
 
-            Texture2D newTexture = new Texture2D(iconInfo.Result, iconInfo.Result);
-            newTexture.LoadImage(icon.Result);
+            Texture2D newTexture = null;
 
-            friendInfos.Add(new FriendInfo(name.Result, newTexture));
+            if (iconInfo.Result != 0)
+            {
+                newTexture = new Texture2D(iconInfo.Result, iconInfo.Result);
+                newTexture.LoadImage(icon.Result);
+            }
+
+            friendInfos.Add(new FriendInfo(name.Result, friend, newTexture));
         }
 
         _loadingPanel.SetActive(false);
@@ -70,7 +75,7 @@ public class ExpectationFriend : MonoBehaviour
 
             GameObject friend = Instantiate(prefab, _parents);
             _panelsList.Add(friend);
-            friend.GetComponent<FriendPanelUI>().Spawn(info.Name, info.Icon);
+            friend.GetComponent<FriendPanelUI>().Spawn(info.Name, info.Id, info.Icon);
         }
         friendInfos.Clear();
     }
@@ -91,14 +96,17 @@ public class ExpectationFriend : MonoBehaviour
     private class FriendInfo
     {
         private string _name;
+        private string _id;
         private Texture2D _icon;
 
         public string Name => _name;
+        public string Id => _id;
         public Texture2D Icon => _icon;
 
-        public FriendInfo(string name, Texture2D texture)
+        public FriendInfo(string name, string id, Texture2D texture)
         {
             _name = name;
+            _id = id;
             _icon = texture;
         }
     }

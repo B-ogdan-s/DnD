@@ -10,7 +10,7 @@ public class FriendButton : MonoBehaviour
     [SerializeField] private string _key;
     [SerializeField] private bool _activate = false;
 
-    [SerializeField] private ExpectationFriend _friend;
+    [SerializeField] private FriendsListPopup _friend;
 
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Color _disableColor;

@@ -13,7 +13,7 @@ namespace FriendInfo
 
         private string _frandId;
 
-        public static event Action<string, string> _Invite;
+        public static event Action<string, string, string> _Invite;
 
         public void InputID(string id)
         {
@@ -48,7 +48,7 @@ namespace FriendInfo
 
         public void Invite()
         {
-            _Invite?.Invoke(_frandId, _key);
+            _Invite?.Invoke(Auth._user.UserId, _frandId, _key);
             CloseInvitationFriend();
         }
 
