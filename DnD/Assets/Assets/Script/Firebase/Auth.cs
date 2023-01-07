@@ -13,11 +13,13 @@ public class Auth : MonoBehaviour
 
     public static Action _OpenFirebase;
     public static Action _CloseFirenase;
+    public static Action _OpenMenu;
+
+    public static Action _UpdatePlayerInfo;
+
+    public static Action<string> _UpdatePlayerIcon;
 
     public static Action _SetName;
-    public static Action<int> _SetRecord;
-
-
 
     private void Start()
     {
@@ -53,6 +55,10 @@ public class Auth : MonoBehaviour
             if (!signedIn && _user != null)
             {
                 _OpenFirebase?.Invoke();
+            }
+            else
+            {
+                _OpenMenu?.Invoke();
             }
             _user = _auth.CurrentUser;
         }
@@ -103,6 +109,8 @@ public class Auth : MonoBehaviour
         {
             _user = loginTask.Result;
             _CloseFirenase?.Invoke();
+            _UpdatePlayerInfo?.Invoke();
+            _UpdatePlayerIcon?.Invoke(_user.UserId);
         }
     }
     private IEnumerator CR_Register(string email, string password, string name)
@@ -147,8 +155,9 @@ public class Auth : MonoBehaviour
                 }
             }
             _SetName?.Invoke();
-            _SetRecord?.Invoke(0);
             _CloseFirenase?.Invoke();
+            _UpdatePlayerInfo?.Invoke();
+            _UpdatePlayerIcon?.Invoke(_user.UserId);
         }
     }
 

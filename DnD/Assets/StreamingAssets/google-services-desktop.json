@@ -30,6 +30,13 @@
             {
               "client_id": "46402047973-svjljsc1llphl7vsmueu5ohg3umrou1j.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "46402047973-8lp4dflbt541n2mqus3nqu3v5c1v01ru.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.BAndD.DnD"
+              }
             }
           ]
         }
