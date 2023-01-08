@@ -17,7 +17,7 @@ public class PlayerInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _playerId;
 
     [SerializeField] private float _time;
-    [SerializeField] private float _shift;
+    [SerializeField] private float _ratio;
     [SerializeField] private float _fadeValue;
 
     private float _startPosLeftPanel;
@@ -36,13 +36,13 @@ public class PlayerInfoUI : MonoBehaviour
 
         _canvas = GetComponent<Canvas>();
         _canvas.enabled = true;
-        _startPosLeftPanel = _leftPanel.localPosition.x - _shift;
-        _startPosRightPanel = _rightPanel.localPosition.x + _shift;
-        _endPosLeftPanel = _leftPanel.localPosition.x;
-        _endPosRightPanel = _rightPanel.localPosition.x;
+        _startPosLeftPanel = _leftPanel.position.x - (Screen.width * _ratio);
+        _startPosRightPanel = _rightPanel.position.x + (Screen.width * _ratio);
+        _endPosLeftPanel = _leftPanel.position.x;
+        _endPosRightPanel = _rightPanel.position.x;
 
-        _leftPanel.DOLocalMoveX(_startPosLeftPanel, 0);
-        _rightPanel.DOLocalMoveX(_startPosRightPanel, 0);
+        _leftPanel.DOMoveX(_startPosLeftPanel, 0);
+        _rightPanel.DOMoveX(_startPosRightPanel, 0);
         _fadePanel.DOFade(0, 0);
 
         _canvas.enabled = false;
@@ -74,8 +74,8 @@ public class PlayerInfoUI : MonoBehaviour
             StopCoroutine(_coroutine);
         _canvas.enabled = true;
         _fadePanel.DOFade(_fadeValue, _time);
-        _leftPanel.DOLocalMoveX(_endPosLeftPanel, _time);
-        _rightPanel.DOLocalMoveX(_endPosRightPanel, _time);
+        _leftPanel.DOMoveX(_endPosLeftPanel, _time);
+        _rightPanel.DOMoveX(_endPosRightPanel, _time);
     }
     public void ClosePlayerInfo()
     {
@@ -90,8 +90,8 @@ public class PlayerInfoUI : MonoBehaviour
     private IEnumerator CR_ClosePlayerInfo()
     {
         _fadePanel.DOFade(0, _time);
-        _leftPanel.DOLocalMoveX(_startPosLeftPanel, _time);
-        _rightPanel.DOLocalMoveX(_startPosRightPanel, _time);
+        _leftPanel.DOMoveX(_startPosLeftPanel, _time);
+        _rightPanel.DOMoveX(_startPosRightPanel, _time);
         yield return new WaitForSeconds(_time);
         _canvas.enabled = false;
     }
