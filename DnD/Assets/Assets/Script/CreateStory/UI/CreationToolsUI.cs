@@ -9,7 +9,6 @@ namespace CreateStory
     public class CreationToolsUI : MonoBehaviour
     {
         [SerializeField] private RectTransform _panel;
-
         [SerializeField] private RectTransform _icon;
 
         [SerializeField] private float _time;
@@ -27,7 +26,7 @@ namespace CreateStory
             _panel.DOMoveX(_startPos, 0);
             _icon.DOLocalRotate(new Vector3(0, 0, 90), 0);
 
-            Open();
+            _button.onClick.AddListener(Open);
         }
 
         public void Open()

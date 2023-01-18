@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class PlayerIcon : MonoBehaviour
 {
     [SerializeField] private int _maxSizeImage;
-    [SerializeField] private Image _icon;
+    [SerializeField] private RawImage _infoIcon;
+    [SerializeField] private RawImage _icon;
     [SerializeField] private Texture2D _default;
 
     public static event Action<int> _SetIconInfo;
@@ -102,7 +103,8 @@ public class PlayerIcon : MonoBehaviour
     }
     public void SetIcon(Texture2D texture)
     {
-        _icon.material.SetTexture("_Icon", texture);
+        _icon.texture = texture;
+        _infoIcon.texture = texture;
     }
 
     private void OnDestroy()
