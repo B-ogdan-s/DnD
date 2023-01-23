@@ -70,7 +70,7 @@ public class TransformCamera : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private void CameraMove(Vector2 newPos)
     {
         Vector2 delta = -(newPos - _oldPos);
-        _cameraTransform.position += (delta.y * _cameraTransform.forward + delta.x * _cameraTransform.right) * Time.deltaTime * _slider.value / 10f * _transformSpeed;
+        _cameraTransform.position += (delta.y * _cameraTransform.forward + delta.x * _cameraTransform.right) * Time.deltaTime * _slider.value / 20f * _transformSpeed;
         _oldPos = newPos;
     }
     private void CameraRot(Vector2 newPos)

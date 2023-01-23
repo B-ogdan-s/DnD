@@ -25,7 +25,7 @@ namespace CreateStory
         [SerializeField] private int _maxValue;
 
         [Space(20)]
-        [SerializeField, CustomValueDrawer("CustomDrawer")] private float _backgraundValue;
+        [SerializeField] private float _backgraundValue;
         [Min(0)]
         [SerializeField] private float _panelShift;
         [Min(0)]
@@ -119,11 +119,6 @@ namespace CreateStory
             _panel.DOLocalMoveY(_startPos, _time);
             yield return new WaitForSeconds(_time);
             _canvas.enabled = false;
-        }
-
-        private float CustomDrawer(float value, GUIContent label)
-        {
-            return EditorGUILayout.Slider(label, value, 0f, 1f);
         }
     }
 }
