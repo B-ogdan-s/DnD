@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface ICompositeCharacter
 {
+    
     public void Show();
     
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87cd9d8c939cf82459169432d248261e, type: 3}
   m_Name: Saiber
   m_EditorClassIdentifier: 
-  _className: Seiber
-  _describeClass: Sexy
+  _name: Saiber
+  _description: Saiber
   _showObj: {fileID: 0}
   _statInfo:
     _strenght: 10

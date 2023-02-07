@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12e69b33a60c3c4e9067738a2a9df07, type: 3}
   m_Name: Elf
   m_EditorClassIdentifier: 
-  _raceName: Elf
-  _describeRace: Eva Elfie
+  _name: Elf
+  _description: Elf
   _showObj: {fileID: 0}
   _statInfo:
     _strenght: 0

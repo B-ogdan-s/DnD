@@ -6,13 +6,8 @@ using UnityEngine;
 namespace Character
 {
    [CreateAssetMenu(fileName = "CharacterClass",menuName = "CharacterInfo/CharacterClass")]
-   public class CharacterClass : ScriptableObject,ICompositeCharacter
+   public class CharacterClass : CharacterCharacteristics,ICompositeCharacter
    {
-      [SerializeField] private string _className;
-      [SerializeField] private string _describeClass;
-      [SerializeField] private GameObject _showObj;
-      [SerializeField] private StatInfo _statInfo;
-      
       public void Show()
       {
          
