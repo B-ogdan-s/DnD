@@ -6,18 +6,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TestButton : MonoBehaviour
+public class SetButtonName : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _buttonName;
-    
+
     private Button _button;
     private CharacterCharacteristics _characteristics;
-    public event Action<string,string> _setText;
-
+    public event Action<CharacterCharacteristics> _setText;
+    
     private void Start()
     {
         _button = GetComponent<Button>();
-        _button.onClick.AddListener(()=>_setText?.Invoke(_characteristics.Name,_characteristics.Description));
+        _button.onClick.AddListener(()=>_setText?.Invoke(_characteristics));
     }
 
     public void StartSettings(CharacterCharacteristics characteristics)
@@ -25,5 +25,6 @@ public class TestButton : MonoBehaviour
         _characteristics = characteristics;
         _buttonName.text = _characteristics.Name;
     }
+    
     
 }

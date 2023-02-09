@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Human
   _description: Human
-  _showObj: {fileID: 0}
+  _customizeInfos:
+  - _customizeType: 1
+    _sprite: {fileID: 21300092, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
   _statInfo:
     _strenght: 5
     _agility: 2

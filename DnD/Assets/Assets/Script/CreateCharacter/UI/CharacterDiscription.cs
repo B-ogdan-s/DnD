@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,6 @@ namespace Character
 
     public class CharacterDiscription : MonoBehaviour
     {
-        //[SerializeField] private Button _button;
         [SerializeField] private TextMeshProUGUI _description;
         [SerializeField] private TextMeshProUGUI _nameofRace;
         [SerializeField] private CharacterRace[] _characterRace;
@@ -19,27 +19,32 @@ namespace Character
         [SerializeField] private GameObject _pref;
         [SerializeField] private Transform _parentRace;
         [SerializeField] private Transform _parentClass;
+        [SerializeField] private List<CustomizeSettings> _settingsList;
+        
+        private CharacterCustomize _characterCustomize;
+        
         private void Start()
         {
-           StartSpawn(_characterRace,_parentRace);
-           StartSpawn(_characterClasses,_parentClass);
+            _characterCustomize = new CharacterCustomize(_settingsList);
+            StartSpawn(_characterRace,_parentRace); 
+            StartSpawn(_characterClasses,_parentClass);
         }
 
-        private void ChangeData(string name,string description)
+        private void ChangeData(CharacterCharacteristics characteristics)
         {
-            _description.text = description;
-            _nameofRace.text = name;
+            _description.text = characteristics.Description;
+            _nameofRace.text = characteristics.Name;
+           _characterCustomize.Customization(characteristics.CustomizeInfos);
         }
-
+        
         private void StartSpawn(CharacterCharacteristics[] characteristicsArray,Transform parent)
         {
             for (int i = 0; i < characteristicsArray.Length; i++)
             {
-                TestButton button = Instantiate(_pref, parent).GetComponent<TestButton>();
-                button.StartSettings(characteristicsArray[i]);
-                button._setText += ChangeData;
+                SetButtonName buttonName = Instantiate(_pref, parent).GetComponent<SetButtonName>();
+                buttonName.StartSettings(characteristicsArray[i]);
+                buttonName._setText += ChangeData;
             }
         }
-        
     }
 }

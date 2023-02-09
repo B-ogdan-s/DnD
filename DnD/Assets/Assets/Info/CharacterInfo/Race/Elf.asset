@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Elf
   _description: Elf
-  _showObj: {fileID: 0}
+  _customizeInfos:
+  - _customizeType: 1
+    _sprite: {fileID: 21300094, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
   _statInfo:
     _strenght: 0
     _agility: 0

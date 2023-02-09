@@ -10,7 +10,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Assets/Script/CreateCharacter/CharacterCharacteristics.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Assets/Script/CreateCharacter/ICompositeCharacter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Assets/Script/CreateCharacter/UI/CharacterCustomize.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Assets/Script/CreateCharacter/UI/CharacterDiscription.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Assets/Script/CreateCharacter/UI/SwitchButtons.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -99,7 +101,12 @@
       <workItem from="1674565963050" duration="5751000" />
       <workItem from="1675450953944" duration="3053000" />
       <workItem from="1675789212635" duration="5120000" />
-      <workItem from="1675798497965" duration="4920000" />
+      <workItem from="1675798497965" duration="5511000" />
+      <workItem from="1675885298011" duration="6536000" />
+      <workItem from="1675897606341" duration="578000" />
+      <workItem from="1675909163550" duration="5756000" />
+      <workItem from="1675938163144" duration="2814000" />
+      <workItem from="1675971496058" duration="3454000" />
     </task>
     <servers />
   </component>
