@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class StoryInfo
 {
-    public int _height;
-    public int _length;
+    public Vector3 _startPosition;
+    public DefaultPanel[,] _defaultPanels;
 }

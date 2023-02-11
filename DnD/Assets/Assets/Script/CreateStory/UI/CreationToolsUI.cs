@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CreateStory
+namespace TestCreateStory
 {
     public class CreationToolsUI : MonoBehaviour
     {
