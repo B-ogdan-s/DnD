@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12e69b33a60c3c4e9067738a2a9df07, type: 3}
   m_Name: Human
   m_EditorClassIdentifier: 
-  _name: Human
-  _description: Human
+  _stringInfo:
+    _name: Human
+    _descriptionInfos:
+    - _lineCounter: 2
+      _fontSize: 25
+      _discription: Samurai loxi japan top bogdan krasavec Dima debilYarik and Nikita
+        sosite
+    - _lineCounter: 2
+      _fontSize: 25
+      _discription: Samurai loxi japan top bogdan krasavec Dima debilYarik and Nikita
+        sosite
   _customizeInfos:
   - _customizeType: 1
     _sprite: {fileID: 21300092, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}

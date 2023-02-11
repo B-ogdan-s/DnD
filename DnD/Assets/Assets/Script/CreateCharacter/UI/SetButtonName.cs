@@ -23,7 +23,7 @@ public class SetButtonName : MonoBehaviour
     public void StartSettings(CharacterCharacteristics characteristics)
     {
         _characteristics = characteristics;
-        _buttonName.text = _characteristics.Name;
+        _buttonName.text = _characteristics.StringInfo.Name;
     }
     
     

@@ -12,9 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87cd9d8c939cf82459169432d248261e, type: 3}
   m_Name: Saiber
   m_EditorClassIdentifier: 
-  _name: Saiber
-  _description: Saiber
-  _showObj: {fileID: 0}
+  _stringInfo:
+    _name: Saiber
+    _descriptionInfos:
+    - _lineCounter: 1
+      _fontSize: 46
+      _discription: Geeiii
+  _customizeInfos:
+  - _customizeType: 4
+    _sprite: {fileID: 21300206, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
+  - _customizeType: 2
+    _sprite: {fileID: 21300260, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
+  - _customizeType: 3
+    _sprite: {fileID: 21300208, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
+  - _customizeType: 5
+    _sprite: {fileID: 21300050, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
+  - _customizeType: 6
+    _sprite: {fileID: 21300050, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}
   _statInfo:
     _strenght: 10
     _agility: 10

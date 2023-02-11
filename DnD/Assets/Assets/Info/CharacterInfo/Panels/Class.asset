@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2f7213093cd4f4593f67f6d9c4b05f, type: 3}
+  m_Name: Class
+  m_EditorClassIdentifier: 
+  _stringInfo:
+    _name: Class
+    _descriptionInfos:
+    - _lineCounter: 2
+      _fontSize: 46
+      _discription: Class is a very important part of gameplay and player can chose
+        one of each independet classes
+  _characteristicsList:
+  - {fileID: 11400000, guid: d45a979c96a900a4fba939e3febd86c6, type: 2}
+  - {fileID: 11400000, guid: 47fe6e4329a39a840add4ccebf6f2119, type: 2}
+  - {fileID: 11400000, guid: 0004d92eaa2273c49954dbadd2b0a75b, type: 2}

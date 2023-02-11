@@ -12,8 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12e69b33a60c3c4e9067738a2a9df07, type: 3}
   m_Name: Naga
   m_EditorClassIdentifier: 
-  _name: Naga
-  _description: Naga Sirena
+  _stringInfo:
+    _name: Naga
+    _descriptionInfos:
+    - _lineCounter: 3
+      _fontSize: 25
+      _discription: Samurai loxi japan top bogdan krasavec Dima debilYarik and Nikita
+        sositeSamurai loxi japan top bogdan krasavec Dima debilYarik and Nikita sosite
+    - _lineCounter: 15
+      _fontSize: 50
+      _discription: '1
+
+        2
+
+        3
+
+        4
+
+        5
+
+        6
+
+        7
+
+        8
+
+        9
+
+        10
+
+        11
+
+        12
+
+        13
+
+        14
+
+        15'
   _customizeInfos:
   - _customizeType: 1
     _sprite: {fileID: 21300088, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}

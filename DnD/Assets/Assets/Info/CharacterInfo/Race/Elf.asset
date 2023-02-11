@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12e69b33a60c3c4e9067738a2a9df07, type: 3}
   m_Name: Elf
   m_EditorClassIdentifier: 
-  _name: Elf
-  _description: Elf
+  _stringInfo:
+    _name: Elf
+    _descriptionInfos:
+    - _lineCounter: 1
+      _fontSize: 25
+      _discription: Samurai loxi japan top bogdan krasavec Dima debil
   _customizeInfos:
   - _customizeType: 1
     _sprite: {fileID: 21300094, guid: 15b2d2faaecad4bfb9edc6585d94f509, type: 3}

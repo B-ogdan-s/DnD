@@ -8,8 +8,10 @@ public enum CustomizeType
     Hat,
     Head,
     Body,
-    Arms,
-    Legs
+    FrontArm,
+    BackArm,
+    FrontLeg,
+    BackLeg
 }
 
 public class CharacterCustomize 

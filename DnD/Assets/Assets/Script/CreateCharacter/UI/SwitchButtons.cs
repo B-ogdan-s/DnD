@@ -8,27 +8,53 @@ public class SwitchButtons : MonoBehaviour
 {
    [SerializeField] private Button _nextButton;
    [SerializeField] private Button _previousButton;
-   [SerializeField] private GameObject _racePanel;
-   [SerializeField] private GameObject _classPanel;
+
+   public event Action<int> switchPanel;
+   private int _minPos = 0;
+   private int _maxPos = 0;
+   private int _pos = 0;
 
    private void Start()
    {
-      _previousButton.interactable = false;
-      _nextButton.onClick.AddListener(SetNext);
-      _previousButton.onClick.AddListener(SetPrevious);
+      if (_pos == _minPos)
+      {
+         _previousButton.interactable = false;
+      }
+      if (_pos == _maxPos)
+      {
+         _nextButton.interactable = false;
+      }
+      _previousButton.onClick.AddListener(() =>
+      {
+         if (_pos>_minPos)
+         {
+            _pos--;
+            if (_pos == _minPos)
+            {
+               _previousButton.interactable = false;
+            }
+            _nextButton.interactable = true;
+            switchPanel?.Invoke(_pos);
+         }
+      });
+      _nextButton.onClick.AddListener(() =>
+      {
+         if (_pos<_maxPos)
+         {
+            _pos++;
+            if (_pos == _maxPos)
+            {
+               _nextButton.interactable = false;
+            }
+            _previousButton.interactable = true;
+            switchPanel?.Invoke(_pos);
+         }
+      });
    }
 
-   private void SetNext()
+   public void StartSettings(int maxPos)
    {
-      _previousButton.interactable = true;
-      _racePanel.SetActive(false);
-      _classPanel.SetActive(true);
+      _maxPos = maxPos;
    }
 
-   private void SetPrevious()
-   {
-      _racePanel.SetActive(true);
-      _classPanel.SetActive(false);
-      _previousButton.interactable = false;
-   }
 }

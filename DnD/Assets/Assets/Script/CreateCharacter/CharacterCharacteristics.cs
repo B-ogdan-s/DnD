@@ -8,13 +8,12 @@ namespace Character
     
     public class CharacterCharacteristics : ScriptableObject
     {
-        [SerializeField] private string _name;
-        [SerializeField] private string _description;
+        [SerializeField] private StringInfo _stringInfo;
         [SerializeField] private List<CustomizeInfo> _customizeInfos;
         [SerializeField] private StatInfo _statInfo;
 
-        public string Name => _name;
-        public string Description => _description;
+
+        public StringInfo StringInfo => _stringInfo;
         public List<CustomizeInfo> CustomizeInfos => _customizeInfos;
     }
 }
