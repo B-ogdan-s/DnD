@@ -42,8 +42,9 @@ namespace TestCreateStory
                 obj.transform.SetParent(_sizePlatformParent);
 
                 _sizePlatforms.Add(obj.GetComponent<ScalePanel>());
-                _sizePlatforms[i]._updatePos += UpdateScalePose;
-                _sizePlatforms[i]._updateScale += UpdateScaleTitle;
+
+                //_sizePlatforms[i]._updatePos += UpdateScalePose;
+                //_sizePlatforms[i]._updateScale += UpdateScaleTitle;
             }
 
             Vector3Int vector = new Vector3Int(-1, 0, 0);
@@ -137,7 +138,7 @@ namespace TestCreateStory
             {
                 if(panel != plane)
                 {
-                    panel.UpdatePos(_startScalePos, _endScalePos);
+                    //panel.UpdateTransform(_startScalePos, _endScalePos);
                 }
             }
         }
@@ -151,6 +152,8 @@ namespace TestCreateStory
             _endPos = _startPos + new Vector3(heigh-1, 0, length-1) * _size;
             _endScalePos = _endPos;
             _endScalePos += new Vector3(1, 0, 1) * _size * 1.5f;
+
+            Debug.Log(_startPos + ";   " + _endPos);
 
             for (int i = 0; i < heigh; i++)
             {

@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxScaleNum: 50
   _line: {fileID: 7150944900157588628}
-  _vector: {x: 0, y: 0, z: 0}
   _slideValue: 0.75
   _timeReturn: 0.1
+  _num: 0
 --- !u!1 &7150944899901617327
 GameObject:
   m_ObjectHideFlags: 0

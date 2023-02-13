@@ -24,14 +24,24 @@ namespace CreateStory
 
         private void Start()
         {
-            _scale.SpawnSizePanel(_initialSize, _sizeTile);
+            _scale.SpawnSizePanel(_initialSize, _sizeTile, UpdateSize);
 
             _storyInfo = new StoryInfo();
             _size = _initialSize;
 
-            _storyInfo._startPosition = _startPos = new Vector3(-_initialSize.x / 2, 0, -_initialSize.y / 2) * _sizeTile;
-
+            _storyInfo._startPosition = _startPos = new Vector3(-_initialSize.x, 0, -_initialSize.y) / 2 * _sizeTile;
             _endPos = _startPos + new Vector3(_initialSize.x - 1, 0, _initialSize.y - 1) * _sizeTile;
+        }
+
+        private void UpdateSize(int value, Vector2Int vector)
+        {
+            for(int i = 0; i < 2; i++)
+            {
+                if (vector[i] != 0)
+                {
+                    _size[i] += value;
+                }
+            }
         }
     }
 }

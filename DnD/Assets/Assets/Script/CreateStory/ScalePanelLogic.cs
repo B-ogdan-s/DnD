@@ -9,118 +9,68 @@ namespace CreateStory
         private Transform _scalePanel;
         private Transform _line;
 
-        private int _numSize;
         private float _size;
         private Vector3Int _vector;
-        private Vector3 _position;
 
-        private Vector3 _startPos;
-        private Vector3 _endPos;
 
-        public ScalePanelLogic (Transform scalePanel, Transform line)
+        public ScalePanelLogic(Transform scalePanel, Transform line)
         {
             _scalePanel = scalePanel;
             _line = line;
         }
 
-        public void SetPosition()
-        {
-            _position = _scalePanel.position;
-        }
-
-        public void StartSettings(Vector3 startPos, Vector3 endPos, Vector3Int vector, int num, float size)
+        public void StartSettings(Vector3 startPos, Vector3 endPos, Vector3Int vector, float size)
         {
             _size = size;
             _vector = vector;
 
-            _startPos = startPos;
-            _endPos = endPos;
+            UpdateTransform(startPos, endPos);
+        }
 
-            UpdatePos(startPos, endPos);
-
-            _numSize = num / 2;
+        public (int, Vector3, Vector3Int) UpdatePosition(Vector3 position, float slideValue)
+        {
+            Vector3 delta = Vector3.Scale(_scalePanel.position - position, _vector);
+            Vector3 deltaMove = _size * (Vector3)_vector;
 
             for (int i = 0; i < 3; i++)
             {
-                if (vector[i] < 0 && num % 2 == 0)
+                if (delta[i] > slideValue * _size)
                 {
-                    _numSize--;
-                    break;
+                    return (1, deltaMove, _vector);
                 }
+                else if(delta[i] < (slideValue - 1) * _size)
+                {
+                    return (-1, -deltaMove, _vector);
+                }
+                
             }
+            return (0, Vector3.zero, _vector);
         }
 
-        public (Vector3, Vector3, Vector3) PanelMove(Vector3 touch, float slideValue)
+        public (Vector3, int) TouchUpdate(Vector3 position)
         {
-            float deltaX = touch.x * Mathf.Abs(_vector.z);
-            float deltaZ = touch.z * Mathf.Abs(_vector.x);
-            Vector3 delta = new Vector3(deltaX, 0 , deltaZ);
-
+            Vector3 vector = new Vector3(Mathf.Abs(_vector.x), Mathf.Abs(_vector.y), Mathf.Abs(_vector.z));
+            Vector3 delta = Vector3.Scale(position, vector);
             _scalePanel.position += delta;
 
+            int value = 0;
             for(int i = 0; i < 3; i++)
             {
-                if(_vector[2 - i] != 0)
+                if (_vector[i] != 0)
                 {
-                    float pos = _scalePanel.position[i];
-                    float check1 = (_position[i] + _size * (slideValue) * _vector[2 - i]);
-                    float check2 = (_position[i] - _size * (1f - slideValue) * _vector[2 - i]);
-
-                    bool boolValue1 = true;
-                    bool boolValue2 = _numSize > 0;
-
-                    if (_vector[2 - i] < 0)
-                    {
-                        float f = check1;
-                        check1 = check2;
-                        check2 = f;
-
-                        bool b = boolValue1;
-                        boolValue1 = boolValue2;
-                        boolValue2 = b;
-
-                        _startPos += delta;
-                    }
-                    else
-                    {
-                        _endPos += delta;
-                    }
-
-                    if (pos > check1 && boolValue1)
-                    {
-                        _numSize += _vector[2 - i];
-                        _position[i] += _size;
-                    }
-                    else if (pos < check2 && boolValue2)
-                    {
-                        _numSize -= _vector[2 - i];
-                        _position[i] -= _size;
-
-                    }
-
-                    break;
+                    value = _vector[i];
                 }
             }
 
-            return (delta, _startPos, _endPos);
+            return (delta, value);
         }
 
-        public (Vector3, Vector3, Vector3) ReturnPos()
+        public void UpdateTransform(Vector3 startPos, Vector3 endPos)
         {
-            float deltaX = _position.x - _scalePanel.position.x;
-            float deltaZ = _position.z - _scalePanel.position.z;
-
-            Vector3 delta = new Vector3(deltaX, 0, deltaZ);
-
-            return (_position, _startPos, _endPos);
-        }
-
-        public void UpdatePos(Vector3 startPos, Vector3 endPos)
-        {
-            SetMovePos(startPos, endPos);
+            SetPos(startPos, endPos);
             SetScale(startPos, endPos);
         }
-        private void SetMovePos(Vector3 startPos, Vector3 endPos)
+        private void SetPos(Vector3 startPos, Vector3 endPos)
         {
             Vector3 pos = Vector3.zero;
 
@@ -128,11 +78,11 @@ namespace CreateStory
             {
                 if (_vector[i] != 0)
                 {
-                    pos[i] = startPos[i] + (endPos[i] - startPos[i]) / 2f;
+                    pos[2-i] = startPos[2-i] + (endPos[2-i] - startPos[2-i]) / 2f;
                     if (_vector[i] > 0)
-                        pos[2 - i] = endPos[2 - i];
+                        pos[i] = endPos[i];
                     else
-                        pos[2 - i] = startPos[2 - i];
+                        pos[i] = startPos[i];
 
                     break;
                 }
@@ -147,8 +97,7 @@ namespace CreateStory
             {
                 if (_vector[i] != 0)
                 {
-                    Debug.Log(_size);
-                    scale = ((endPos[i] - startPos[i]) - _size * 1.8f);
+                    scale = ((endPos[2-i] - startPos[2-i]) - _size * 1.8f);
                     break;
                 }
             }
