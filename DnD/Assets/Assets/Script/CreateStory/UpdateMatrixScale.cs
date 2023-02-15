@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class UpdateMatrixScale
 {
-    public T[,] AddLayer<T>(T[,] oldMatrix, out List<Vector2Int> freeList, Vector2Int oldScale, Vector2Int newScale, int vector)
+    public (T[,], List <Vector2Int>) AddLayer<T>(T[,] oldMatrix, Vector2Int oldScale, Vector2Int newScale, int vector)
     {
         Vector2Int delta = newScale - oldScale;
-        freeList = new List<Vector2Int>();
+        List<Vector2Int> freeList = new List<Vector2Int>();
         T[,] newMatrix = new T[newScale.x, newScale.y];
 
         for(int i = 0; i < oldScale.x; i++)
@@ -32,12 +32,12 @@ public class UpdateMatrixScale
                     i * delta.x));
         }
 
-        return newMatrix;
+        return (newMatrix, freeList);
     }
-    public T[,] RemoveLayer<T>(T[,] oldMatrix, out List<T> deltaMatrix, Vector2Int oldScale, Vector2Int newScale, int vector)
+    public (T[,], List<T>) RemoveLayer<T>(T[,] oldMatrix, Vector2Int oldScale, Vector2Int newScale, int vector)
     {
         Vector2Int delta = oldScale - newScale;
-        deltaMatrix = new List<T>();
+        List<T> deltaMatrix = new List<T>();
         T[,] newMatrix = new T[newScale.x, newScale.y];
 
         for(int i = 0; i < newScale.x; i++)
@@ -61,6 +61,6 @@ public class UpdateMatrixScale
                     i * delta.x ]);
         }
 
-        return newMatrix;
+        return (newMatrix, deltaMatrix);
     }
 }

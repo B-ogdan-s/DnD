@@ -99,19 +99,20 @@ namespace TestCreateStory
 
             if(value > 0)
             {
-                _layers._defaultPanels = _updateMatrixScale.AddLayer(_layers._defaultPanels, out List<Vector2Int> freeList, oldPos, _num, scaleVector);
+                var updateMatrix = _updateMatrixScale.AddLayer(_layers._defaultPanels, oldPos, _num, scaleVector);
+                _layers._defaultPanels = updateMatrix.Item1;
 
-                foreach (Vector2Int item in freeList)
+                foreach (Vector2Int item in updateMatrix.Item2)
                 {
                     _layers._defaultPanels[item.x, item.y] = SpawnDefaultPanel(_defaultTile, _parentsTitle, new Vector3(item.x, 0, item.y) * _size + _startPos, new Vector2(item.x, item.y));
                 }
             }
             else
             {
-                _layers._defaultPanels = _updateMatrixScale.RemoveLayer(_layers._defaultPanels, out List<DefaultPanel> deltaList,
-                    oldPos, _num, scaleVector);
+                var updateMatrix = _updateMatrixScale.RemoveLayer(_layers._defaultPanels, oldPos, _num, scaleVector);
+                _layers._defaultPanels = updateMatrix.Item1;
 
-                foreach (var delta in deltaList)
+                foreach (var delta in updateMatrix.Item2)
                 {
                     if(delta != null)
                         delta.Disable();
