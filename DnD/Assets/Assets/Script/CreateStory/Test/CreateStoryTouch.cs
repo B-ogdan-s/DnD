@@ -1,17 +1,13 @@
-using Cinemachine;
-using TestCreateStory;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace TestCreateStory
 {
-    public class CreateStoryTouch : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
+    public class CreateStoryTouch : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private Transform _cameraTransform;
+        [SerializeField] private LayerMask _layerMask;
 
         private List<PointerEventData> _pointers = new List<PointerEventData>();
         private int _pointersCount => _pointers.Count;
@@ -27,15 +23,18 @@ namespace TestCreateStory
             if (_pointersCount == 1)
             {
                 Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-                if (Physics.Raycast(ray, out RaycastHit hit))
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerMask))
                 {
-                    if (hit.transform.GetComponentInParent<ITouch>() != null)
+                    ITouch touch = hit.transform.GetComponentInParent<ITouch>();
+
+                    if (touch != null)
                     {
-                        _iTouch = hit.transform.GetComponentInParent<ITouch>();
+                        Debug.Log(touch);
+                        _iTouch = touch;
                     }
                 }
-                if(_iTouch != null)
-                    _iTouch.TouchDown();
+
+                _iTouch?.TouchDown();
 
                 _oldTouchPos = hit.point;
             }
@@ -43,18 +42,27 @@ namespace TestCreateStory
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (_iTouch != null)
+            Ray ray = Camera.main.ScreenPointToRay(eventData.position);
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerMask))
             {
-                _iTouch.TouchUp();
-                _iTouch = null;
+                if (hit.transform.TryGetComponent(out ITouch touch))
+                {
+                    _iTouch = touch;
+                }
+
+                if (_iTouch != null)
+                {
+                    _iTouch.TouchUp();
+                    _iTouch = null;
+                }
+                _pointers.Remove(eventData);
             }
-            _pointers.Remove(eventData);
         }
 
         public void OnDrag(PointerEventData eventData)
         {
             Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerMask))
             {
                 Vector3 newPos = hit.point;
 
@@ -64,16 +72,6 @@ namespace TestCreateStory
                 }
                 _oldTouchPos = newPos;
             }
-        }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-
         }
     }
 }

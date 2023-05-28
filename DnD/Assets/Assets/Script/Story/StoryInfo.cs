@@ -5,5 +5,5 @@ using UnityEngine;
 public class StoryInfo
 {
     public Vector3 _startPosition;
-    public DefaultPanel[,] _defaultPanels;
+    public DefaultTile[,] _defaultPanels;
 }

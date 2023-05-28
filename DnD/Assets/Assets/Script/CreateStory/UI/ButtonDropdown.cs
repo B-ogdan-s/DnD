@@ -9,21 +9,23 @@ namespace TestCreateStory
     public class ButtonDropdown : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _nameButton;
-        [SerializeField] private GameObject _buttonPrefab;
+        [SerializeField] private Brush _buttonPrefab;
         [SerializeField] private Transform _parents;
 
         [SerializeField] private Button _button;
 
-        public void StartSetings(string name, List<TileInfo> tiles)
+        public void StartSetings(string name, List<TileInfo> tiles, System.Action<TileInfo> action)
         {
             _button.onClick.AddListener(Open);
             _nameButton.text = name;
 
             foreach (var tile in tiles)
             {
-                GameObject obj = Instantiate(_buttonPrefab);
+                Brush obj = Instantiate(_buttonPrefab);
                 obj.transform.SetParent(_parents, false);
-                obj.GetComponent<Brush>().StartSettings(tile);
+                obj.StartSettings(tile);
+
+                obj.UpdateTile += action;
             }
         }
 

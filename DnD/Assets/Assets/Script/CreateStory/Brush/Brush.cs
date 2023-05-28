@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,8 +11,9 @@ public class Brush : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text;
 
     private Button _button;
-
     private TileInfo _tileInfo;
+
+    public Action<TileInfo> UpdateTile;
 
 
     public void StartSettings(TileInfo tile)
@@ -24,7 +26,8 @@ public class Brush : MonoBehaviour
 
         _button.onClick.AddListener(() =>
         {
-            Brushes._instance.SetTitle(_tileInfo);
+            UpdateTile?.Invoke(_tileInfo);
+            //Brushes._instance.SetTitle(_tileInfo);
         });
     }
 }

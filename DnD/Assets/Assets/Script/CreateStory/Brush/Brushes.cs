@@ -7,35 +7,27 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Brushes : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefabButton;
+    [SerializeField] private ButtonDropdown _prefabButton;
     [SerializeField] private List<BrusheInfo> _brushes = new List<BrusheInfo>();
+    [SerializeField] private ShowBrush _showBrush;
 
     private List<ButtonDropdown> _buttonDropdowns = new List<ButtonDropdown>();
 
-    [SerializeField] private TileInfo _tileInfo;
-
-    public static Brushes _instance;
-
-    private void Start()
+    private void Awake()
     {
-        if(_instance == null)
-            _instance = this;
-
-
         foreach (var brush in _brushes)
         {
-            GameObject obj = Instantiate(_prefabButton);
+            ButtonDropdown obj = Instantiate(_prefabButton);
 
             obj.transform.SetParent(transform, false);
-            _buttonDropdowns.Add(obj.GetComponent<ButtonDropdown>());
-            obj.GetComponent<ButtonDropdown>().StartSetings(brush._Name, brush._Tiles);
-
+            _buttonDropdowns.Add(obj);
+            obj.StartSetings(brush._Name, brush._Tiles, SetTitle);
         }
     }
 
     public void SetTitle(TileInfo info)
     {
-        _tileInfo = info;
+        _showBrush.SetBrush(info);
     }
 }
 

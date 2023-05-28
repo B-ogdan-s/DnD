@@ -1,21 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class DefaultPanel : MonoBehaviour, ITouch
+public class DefaultTile : MonoBehaviour, ITouch
 {
-    private Vector2 _position;
-    
+    private Vector2Int _position;
+
+    public Action<Vector2Int> Down;
+
     public bool Check
     {
         get;
         private set;
     }
-
-    public void Enable(Vector2 pos)
+    public void Enable(Vector2Int newPosition)
     {
         gameObject.SetActive(true);
-        _position = pos;
+        _position = newPosition;
         Check = true;
     }
     public void Disable()
@@ -26,7 +26,7 @@ public class DefaultPanel : MonoBehaviour, ITouch
 
     public void TouchDown()
     {
-        Debug.Log(_position);
+        Debug.Log("Down" + _position);
     }
 
     public void TouchHolding(Vector3 touchPos)
@@ -36,6 +36,6 @@ public class DefaultPanel : MonoBehaviour, ITouch
 
     public void TouchUp()
     {
-
+        Debug.Log("Up" + _position);
     }
 }
